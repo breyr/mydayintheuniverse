@@ -10,6 +10,7 @@ dotenv.load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 app = Flask(__name__)
+# bad for practice but it works
 app.secret_key = os.getenv("SECRET_KEY")
 
 
@@ -20,7 +21,6 @@ def index():
     # make sure data is not empty
     if data:
         if 'code' in data:
-            print(data)
             session.clear()
             # if error code in response, render error page
             return render_template("error.html", response=data['msg'])
