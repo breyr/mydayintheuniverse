@@ -1,0 +1,21 @@
+{% extends 'index.html' %} {% block style %}
+<style>
+  #imageContainer {
+    background-image: url('{{ response.url }}');
+  }
+</style>
+{% endblock %} {% block date %}
+<h3>{{ response['date'] }}</h3>
+{% endblock %} {% block content %}
+<div id="imageContainer">
+  <div id="text">
+    <a href="{{ response.url }}" target="_blank"
+      ><h2>{{ response['title'] }}</h2></a
+    >
+    {% if 'copyright' in response %}
+    <p>Photo credit: {{ response['copyright'] }}</p>
+    {% endif %}
+    <p>{{ response['explanation'] }}</p>
+  </div>
+</div>
+{% endblock %}

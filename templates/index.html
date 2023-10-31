@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MDitU</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0/css/bootstrap.min.css"
+    />
+    {% block style %}{% endblock %}
+  </head>
+  <body>
+    <header class="container mt-3">
+      <h1 class="text-center">My Day in the Universe</h1>
+    </header>
+    <section
+      id="datePicker"
+      class="container mt-3 d-flex justify-content-center align-items-center"
+    >
+      <!-- Date picker form using Bootstrap classes -->
+      <form action="/getimage" method="post" class="w-100" id="dateform">
+        <!-- datepicker bootstrap -->
+        <div class="input-group mb-3 w-50 mx-auto">
+          <input type="date" class="form-control" id="date" name="date" />
+          <button class="btn btn-outline-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </section>
+    {% block date %}{% endblock %}
+    <section id="content" class="container mt-3">
+      <!-- Content section using Bootstrap classes -->
+      {% block content %} {% endblock %}
+    </section>
+    <footer class="container mt-3 text-center text-muted">
+      <p>
+        <a href="https://www.nasa.gov/multimedia/imagegallery/iotd.html"
+          >Generated utilizing NASA Image of the Day API</a
+        >
+      </p>
+      <p>Hover over image for details :)</p>
+    </footer>
+    <!-- jQuery and index.js scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+  </body>
+</html>
